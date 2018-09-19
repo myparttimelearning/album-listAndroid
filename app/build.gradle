@@ -37,6 +37,14 @@ dependencies {
     implementation appDependencies.retroFitConverter
     testImplementation appTestDependencies.junit
     testImplementation appTestDependencies.mockito
+    androidTestImplementation appTestDependencies.mockito
+    androidTestImplementation appTestDependencies.testRules
     androidTestImplementation appTestDependencies.testRunner
     androidTestImplementation appTestDependencies.espresso
+    androidTestImplementation appTestDependencies.espressoContrib
+//    androidTestImplementation appTestDependencies.espressoIntents
+//    androidTestImplementation appTestDependencies.espressoAccess
+//    androidTestImplementation appTestDependencies.espressoWeb
+//    androidTestImplementation appTestDependencies.espressoConcurrentIdling
+//    androidTestImplementation appTestDependencies.espressoResourceIdling
 }

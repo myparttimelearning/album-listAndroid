@@ -2,6 +2,8 @@ package com.rumodigi.albumlist;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
@@ -58,7 +60,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         Log.d(TAG, "onCreate");
         progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Loading Albums, please wait");
+        progressDialog.setMessage(getString(R.string.loading_albums));
         loadAlbums = findViewById(R.id.load_albums);
         loadAlbums.setOnClickListener(view -> {
             if (checkForInternet()) {
@@ -74,9 +76,8 @@ public class MainActivity extends Activity {
         super.onResume();
         Log.d(TAG, "onResume");
         if(albums != null){
+            loadAlbums.setVisibility(View.GONE);
             sortListAndRender();
-        } else {
-            loadAlbums.setVisibility(View.VISIBLE);
         }
     }
 

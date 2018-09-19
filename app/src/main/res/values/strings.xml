@@ -2,4 +2,5 @@
     <string name="app_name">AlbumList</string>
     <string name="try_again">Try Again</string>
     <string name="load_albums">Load Albums</string>
+    <string name="loading_albums">Loading Albums, please wait</string>
 </resources>
