@@ -11,18 +11,17 @@ import com.rumodigi.albumlist.R;
 import com.rumodigi.albumlist.model.Album;
 import com.rumodigi.albumlist.view.AlbumViewHolder;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public class AlbumAdapter extends RecyclerView.Adapter<AlbumViewHolder> {
+public class AlbumAdapter extends RecyclerView.Adapter<AlbumViewHolder>{
 
-    private List<Album> albumList;
+    private ArrayList<Album> albumList;
     private Context context;
 
-    public AlbumAdapter(Context context, List<Album> albumList){
+    public AlbumAdapter(Context context, ArrayList<Album> albumList){
         this.context = context;
         this.albumList = albumList;
     }
-
 
     @NonNull
     @Override
@@ -39,5 +38,9 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumViewHolder> {
     @Override
     public int getItemCount(){
         return albumList.size();
+    }
+
+    public ArrayList<Album> getAlbumList() {
+        return albumList;
     }
 }

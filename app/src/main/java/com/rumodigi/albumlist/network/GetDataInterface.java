@@ -2,7 +2,7 @@ package com.rumodigi.albumlist.network;
 
 import com.rumodigi.albumlist.model.Album;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -10,5 +10,5 @@ import retrofit2.http.GET;
 public interface GetDataInterface {
 
     @GET("/albums")
-    Call<List<Album>> getAllAlbums();
+    Call<ArrayList<Album>> getAllAlbums();
 }
