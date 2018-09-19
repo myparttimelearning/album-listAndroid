@@ -1,0 +1,42 @@
+apply plugin: 'com.android.application'
+
+android {
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+
+    compileSdkVersion globalConfiguration.getAt("androidCompileSdkVersion")
+    buildToolsVersion globalConfiguration.getAt("androidBuildToolsVersion")
+
+    defaultConfig {
+        minSdkVersion globalConfiguration.getAt("androidMinSdkVersion")
+        targetSdkVersion globalConfiguration.getAt("androidTargetSdkVersion")
+        applicationId globalConfiguration.getAt("androidApplicationId")
+        versionCode globalConfiguration.getAt("androidVersionCode")
+        versionName globalConfiguration.getAt("androidVersionName")
+        testInstrumentationRunner globalConfiguration.getAt("testInstrumentationRunner")
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
+    }
+}
+
+dependencies {
+    def appDependencies = rootProject.ext.appDependencies
+    def appTestDependencies = rootProject.ext.appTestDependencies
+    implementation appDependencies.androidSupport
+    implementation appDependencies.cardView
+    implementation appDependencies.recyclerView
+    implementation appDependencies.constraintLayout
+    implementation appDependencies.retroFit
+    implementation appDependencies.retroFitConverter
+    testImplementation appTestDependencies.junit
+    testImplementation appTestDependencies.mockito
+    androidTestImplementation appTestDependencies.testRunner
+    androidTestImplementation appTestDependencies.espresso
+}
