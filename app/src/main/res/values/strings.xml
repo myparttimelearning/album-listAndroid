@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AlbumList</string>
+    <string name="try_again">Try Again</string>
+    <string name="load_albums">Load Albums</string>
 </resources>
