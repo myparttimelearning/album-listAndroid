@@ -3,6 +3,7 @@ package com.rumodigi.albumlist;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -31,7 +32,7 @@ public class MainActivity extends Activity {
     Button loadAlbums;
     AlbumAdapter albumAdapter;
     RecyclerView recyclerView;
-    RecyclerView.LayoutManager linearLayoutManager;
+    RecyclerView.LayoutManager layoutManager;
     ArrayList<Album> albums;
     CheckConnectivity checkConnectivity = new CheckConnectivity();
 
@@ -94,14 +95,14 @@ public class MainActivity extends Activity {
 
         call.enqueue(new Callback<ArrayList<Album>>() {
             @Override
-            public void onResponse(Call<ArrayList<Album>> call, Response<ArrayList<Album>> response) {
+            public void onResponse(@NonNull Call<ArrayList<Album>> call, @NonNull Response<ArrayList<Album>> response) {
                 loadAlbums.setVisibility(View.GONE);
                 progressDialog.dismiss();
                 albums = response.body();
                 sortListAndRender();
             }
             @Override
-            public void onFailure(Call<ArrayList<Album>> call, Throwable t) {
+            public void onFailure(@NonNull Call<ArrayList<Album>> call, @NonNull Throwable t) {
                 progressDialog.dismiss();
                 loadAlbums.setVisibility(View.VISIBLE);
             }
@@ -117,8 +118,8 @@ public class MainActivity extends Activity {
         });
         recyclerView = findViewById(R.id.recycler_view);
         albumAdapter = new AlbumAdapter(this, albums);
-        linearLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(linearLayoutManager);
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(albumAdapter);
     }
 }
